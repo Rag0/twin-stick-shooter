@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
 
 	public float nextFire;
-	public float fireRate;
+	public static float fireRate;
 
     public static float disparoActual;
 

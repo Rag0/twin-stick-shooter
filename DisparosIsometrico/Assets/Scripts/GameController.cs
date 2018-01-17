@@ -11,6 +11,10 @@ public class GameController : MonoBehaviour
 	public Text gameOverText;
 	public Text restartText;
 
+	// Textos estadisticas
+	public Text speedShot;
+	public float fireRate;
+
     //Spawn this object
     public GameObject enemigo1;
     public static float movHorizontalEnemigo;
@@ -39,7 +43,10 @@ public class GameController : MonoBehaviour
         enemigo1.GetComponent<Enemigo1Controller>().player = player1;
 
 		score = 0;
+		fireRate = 0.5f;
+		PlayerController.fireRate = fireRate;
 		SetScore ();
+		SetSpeedShot ();
     }
 
     void FixedUpdate()
@@ -47,6 +54,7 @@ public class GameController : MonoBehaviour
         if (!gameOver)
         {
 			SetScore ();
+			SetSpeedShot ();
 
             //Counts up
             time += Time.deltaTime;
@@ -74,6 +82,11 @@ public class GameController : MonoBehaviour
 	void SetScore()
 	{
 		scoreText.text = "Score: " + score;
+	}
+
+	void SetSpeedShot()
+	{
+		speedShot.text = "Speed Shot: " + fireRate;
 	}
 
     //Spawns the object and resets the time
